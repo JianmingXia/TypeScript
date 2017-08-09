@@ -1,4 +1,4 @@
-// import * as _ from 'lodash';
+import * as _ from "lodash";
 
 interface Person {
   firstName: string;
@@ -6,8 +6,8 @@ interface Person {
 }
 
 function greeter(person: Person) {
-  // return _.toUpper("Hello, " + person.firstName + " " + person.lastName);
-  return "Hello, " + person.firstName + " " + person.lastName;
+  return _.toUpper("Hello, ") + person.firstName + " " + person.lastName;
+  // return "Hello, " + person.firstName + " " + person.lastName;
 }
 
 export { greeter }

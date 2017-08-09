@@ -4,10 +4,13 @@
     "noImplicitAny": true,
     "removeComments": true,
     "preserveConstEnums": true,
-    "sourceMap": true
-    // "types": [
-    //   "lodash"
-    // ]
+    "sourceMap": true,
+    "typeRoots": [
+      "node_modules/@types/"
+    ],
+    "types": [
+      "lodash"
+    ]
   },
   "include": [
     "src/*"
