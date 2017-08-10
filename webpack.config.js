@@ -22,6 +22,7 @@ var plugins = [
   // }),
   new HtmlWebpackPlugin({
     title: 'TypeScript Demo',
+    // inject: false,
     template: './src/index.html'
   })
 ];
