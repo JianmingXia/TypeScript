@@ -1,4 +1,5 @@
-import * as _ from "lodash";
+// import * as _ from "lodash";
+declare var _:any;
 
 interface Person {
   firstName: string;
@@ -6,7 +7,7 @@ interface Person {
 }
 
 function greeter(person: Person) {
-  return _.toUpper("Hello, ") + person.firstName + " " + person.lastName;
+  return _.toUpper("Helloxxx, ") + person.firstName + " " + person.lastName + " !";
   // return "Hello, " + person.firstName + " " + person.lastName;
 }
 

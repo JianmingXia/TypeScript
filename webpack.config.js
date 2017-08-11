@@ -5,7 +5,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var publicPath = 'http://127.0.0.1:20006/dist_web/';
 
 var entry = {
-  app: "./src/index.ts",
+  app: "./src/index.js",
   vendor: [
     "lodash"
   ]
@@ -24,12 +24,15 @@ var plugins = [
     title: 'TypeScript Demo',
     // inject: false,
     template: './src/index.html'
-  })
+  }),
+  // new webpack.ProvidePlugin({
+  //   _: "lodash"
+  // })
 ];
 
 
 module.exports = {
-  entry: "./src/index.ts",
+  entry: entry,
   output: {
     // filename: "./dist_web/bundle.js"
     // filename: '[name].js',
@@ -37,11 +40,6 @@ module.exports = {
     path: __dirname + '/dist_web',
     publicPath: publicPath,
     libraryTarget: 'umd'
-  },
-  plugins: plugins,
-  resolve: {
-    // Add '.ts' and '.tsx' as a resolvable extension.
-    extensions: [".ts", ".tsx", ".js"]
   },
   module: {
     loaders: [
@@ -55,5 +53,13 @@ module.exports = {
       // loader: "awesome-typescript-loader",
       exclude: /(node_modules)/
     }]
+  },
+  plugins: plugins,
+  resolve: {
+    // Add '.ts' and '.tsx' as a resolvable extension.
+    extensions: [".ts", ".tsx", ".js"],
+    // alias: {
+    //   lodash: "lodash/lodash.min.js"
+    // }
   }
 };

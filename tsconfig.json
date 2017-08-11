@@ -1,20 +1,18 @@
 {
+  "compileOnSave": true,
   "compilerOptions": {
     "module": "commonjs",
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "removeComments": true,
-    "preserveConstEnums": true,
-    "sourceMap": true,
+    "target": "ES5",
     "typeRoots": [
       "node_modules/@types/"
     ],
     "types": [
       "lodash"
-    ]
+    ],
+    "preserveConstEnums": true
   },
-  "include": [
-    "src/*"
-  ],
   "exclude": [
     "node_modules"
   ]
