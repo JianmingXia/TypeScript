@@ -25,9 +25,9 @@ var plugins = [
     // inject: false,
     template: './src/index.html'
   }),
-  // new webpack.ProvidePlugin({
-  //   _: "lodash"
-  // })
+  new webpack.ProvidePlugin({
+    _: "lodash"
+  })
 ];
 
 
