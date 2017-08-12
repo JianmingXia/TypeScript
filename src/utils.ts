@@ -7,8 +7,12 @@ interface Person {
 }
 
 function greeter(person: Person) {
-  return _.toUpper("Helloxxx, ") + person.firstName + " " + person.lastName + " !";
-  // return "Hello, " + person.firstName + " " + person.lastName;
+  return _.toLower("Hello, ") + person.firstName + " " + person.lastName + " !";
 }
 
-export { greeter }
+function addHtmlContent(id, content) {
+  let div = document.getElementById(id);
+  div.innerText += content;
+}
+
+export { greeter, addHtmlContent }
