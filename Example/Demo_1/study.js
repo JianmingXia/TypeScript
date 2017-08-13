@@ -1,79 +1,176 @@
-var myArray;
-myArray = ["Bob", "Fred"];
-var myStr = myArray[0];
-console.log(myStr);
-// interface SearchFunc {
-//   (source: string, subString: string): boolean;
-// }
-// let mySearch1: SearchFunc;
-// mySearch1 = function (source: string, subString: string) {
-//   let result = source.search(subString);
-//   return result > -1;
-// }
-// let mySearch2: SearchFunc;
-// mySearch2 = function (src: string, sub: string): boolean {
-//   let result = src.search(sub);
-//   return result > -1;
-// }
-// let mySearch3: SearchFunc;
-// mySearch3 = function (src, sub) {
-//   let result = src.search(sub);
-//   return result > -1;
-// }
-// console.log(mySearch1("ryoma", "max"));
-// console.log(mySearch2("ryoma", "ma"));
-// console.log(mySearch3("ryoma", "max"));
-// interface SquareConfig {
-//   color?: string;
-//   width?: number;
-// }
-// function createSquare(config: SquareConfig): { color: string; area: number } {
-//   // ...
-//   return { color: "white", area: 100 };
-// }
-// let mySquare = createSquare({ colour: "red", width: 100 } as SquareConfig);
-// interface SquareConfig {
-//   color?: string;
-//   width?: number;
-// }
-// function createSquare(config: SquareConfig): { color: string; area: number } {
-//   let newSquare = { color: "white", area: 100 };
-//   if (config.color) {
-//     // Error: Property 'clor' does not exist on type 'SquareConfig'
-//     newSquare.color = config.clor;
+var Greeter = (function () {
+    function Greeter(message) {
+        this.greeting = message;
+    }
+    Greeter.prototype.greet = function () {
+        return "Hello, " + this.greeting;
+    };
+    return Greeter;
+}());
+var greeter1;
+greeter1 = new Greeter("world");
+console.log(greeter1.greet());
+// abstract class Department {
+//   constructor(public name: string) {
 //   }
-//   if (config.width) {
-//     newSquare.area = config.width * config.width;
+//   printName(): void {
+//     console.log('Department name: ' + this.name);
 //   }
-//   return newSquare;
+//   abstract printMeeting(): void; // 必须在派生类中实现
 // }
-// let mySquare = createSquare({ color: "black" });
-// interface SquareConfig {
-//   color?: string;
-//   width?: number;
-// }
-// function createSquare(config: SquareConfig): { color: string; area: number } {
-//   let newSquare = { color: "white", area: 100 };
-//   if (config.color) {
-//     newSquare.color = config.color;
+// class AccountingDepartment extends Department {
+//   constructor() {
+//     super('Accounting and Auditing'); // constructors in derived classes must call super()
 //   }
-//   if (config.width) {
-//     newSquare.area = config.width * config.width;
+//   printMeeting(): void {
+//     console.log('The Accounting Department meets each Monday at 10am.');
 //   }
-//   return newSquare;
+//   generateReports(): void {
+//     console.log('Generating accounting reports...');
+//   }
 // }
-// let mySquare = createSquare({ color: "black" });
-// console.log(mySquare);
-// interface LabelledValue {
-//   label: string;
+// // let department: Department; // ok to create a reference to an abstract type
+// // department = new Department(); // error: cannot create an instance of an abstract class
+// let department = new AccountingDepartment(); // ok to create and assign a non-abstract subclass
+// department.printName();
+// department.printMeeting();
+// department.generateReports(); // error: method doesn't exist on declared abstract type
+// class Grid {
+//   static origin = { x: 0, y: 0 };
+//   calculateDistanceFromOrigin(point: { x: number; y: number; }) {
+//     let xDist = (point.x - Grid.origin.x);
+//     let yDist = (point.y - Grid.origin.y);
+//     return Math.sqrt(xDist * xDist + yDist * yDist) / this.scale;
+//   }
+//   constructor(public scale: number) { }
 // }
-// function printLabel(labelledObj: LabelledValue) {
-//   console.log(labelledObj.label);
+// let grid1 = new Grid(1.0);  // 1x scale
+// let grid2 = new Grid(5.0);  // 5x scale
+// console.log(grid1.calculateDistanceFromOrigin({ x: 10, y: 10 }));
+// console.log(grid2.calculateDistanceFromOrigin({ x: 10, y: 10 }));
+// let passcode = "secret passcode";
+// class Employee {
+//   private _fullName: string;
+//   get fullName(): string {
+//     return this._fullName;
+//   }
+//   set fullName(newName: string) {
+//     if (passcode && passcode == "secret passcode") {
+//       this._fullName = newName;
+//     }
+//     else {
+//       console.log("Error: Unauthorized update of employee!");
+//     }
+//   }
 // }
-// let myObj = { size: 10, label: "Size 10 Object" };
-// printLabel(myObj);
-// function printLabel(labelledObj: { label: string }) {
-//   console.log(labelledObj);
+// let employee = new Employee();
+// employee.fullName = "Bob Smith";
+// if (employee.fullName) {
+//   alert(employee.fullName);
 // }
-// let myObj = { size: 10, label: "Size 10 Object" };
-// printLabel(myObj); 
+// class Animal {
+//   constructor(private name: string) { }
+//   move(distanceInMeters: number) {
+//     console.log(`${this.name} moved ${distanceInMeters}m.`);
+//   }
+// }
+// class Octopus {
+//   readonly name: string;
+//   readonly numberOfLegs: number = 8;
+//   constructor(theName: string) {
+//     this.name = theName;
+//   }
+// }
+// let dad = new Octopus("Man with the 8 strong legs");
+// dad.name = "Man with the 3-piece suit"; // error! name is readonly.
+// class Person {
+//   protected name: string;
+//   protected constructor(theName: string) { this.name = theName; }
+// }
+// // Employee can extend Person
+// class Employee extends Person {
+//   private department: string;
+//   constructor(name: string, department: string) {
+//     super(name);
+//     this.department = department;
+//   }
+//   public getElevatorPitch() {
+//     return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+//   }
+// }
+// let howard = new Employee("Howard", "Sales");
+// let john = new Person("John"); // Error: The 'Person' constructor is protected
+// class Person {
+//   protected name: string;
+//   constructor(name: string) { this.name = name; }
+// }
+// class Employee extends Person {
+//   private department: string;
+//   constructor(name: string, department: string) {
+//     super(name)
+//     this.department = department;
+//   }
+//   public getElevatorPitch() {
+//     return `Hello, my name is ${this.name} and I work in ${this.department}.`;
+//   }
+// }
+// let howard = new Employee("Howard", "Sales");
+// console.log(howard.getElevatorPitch());
+// console.log(howard.name); // error
+// class Animal {
+//   private name: string;
+//   constructor(theName: string) { this.name = theName; }
+// }
+// class Rhino extends Animal {
+//   constructor() { super("Rhino"); }
+// }
+// class Employee {
+//   private name: string;
+//   constructor(theName: string) { this.name = theName; }
+// }
+// let animal = new Animal("Goat");
+// let rhino = new Rhino();
+// let employee = new Employee("Bob");
+// animal = rhino;
+// animal = employee; // Error: Animal and Employee are not compatible
+// class Animal {
+//   private name: string;
+//   constructor(theName: string) { this.name = theName; }
+// }
+// new Animal("Cat").name; // Error: 'name' is private;
+// class Animal {
+//   name: string;
+//   constructor(theName: string) { this.name = theName; }
+//   move(distanceInMeters: number = 0) {
+//     console.log(`${this.name} moved ${distanceInMeters}m.`);
+//   }
+// }
+// class Snake extends Animal {
+//   constructor(name: string) { super(name); }
+//   move(distanceInMeters = 5) {
+//     console.log("Slithering...");
+//     super.move(distanceInMeters);
+//   }
+// }
+// class Horse extends Animal {
+//   constructor(name: string) { super(name); }
+//   move(distanceInMeters = 45) {
+//     console.log("Galloping...");
+//     super.move(distanceInMeters);
+//   }
+// }
+// let sam = new Snake("Sammy the Python");
+// let tom: Animal = new Horse("Tommy the Palomino");
+// sam.move();
+// tom.move(34);
+// console.log(tom.name);
+// class Greeter {
+//   greeting: string;
+//   constructor(message: string) {
+//     this.greeting = message;
+//   }
+//   greet() {
+//     return "Hello, " + this.greeting;
+//   }
+// }
+// let greeter = new Greeter("world"); 
