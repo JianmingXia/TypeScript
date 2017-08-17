@@ -1,46 +1,39 @@
-interface GenericIdentityFn {
-  <T>(arg: T): T;
+declare enum Enum {
+  A = 1,
+  B,
+  C = 2
 }
+console.log(Enum.A, Enum.B, Enum.C);
 
-function identity<T>(arg: T): T {
-  return arg;
-}
-
-let myIdentity: GenericIdentityFn = identity;
-
-
-// function identity<T>(arg: T): T {
-//   return arg;
+// const enum Directions {
+//   Up,
+//   Down,
+//   Left,
+//   Right
 // }
 
-// let myIdentity: <T>(arg: T) => T = identity;
+// let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right]
 
 
-// function loggingIdentity<T>(arg: Array<T>): Array<T> {
-//   console.log(arg.length);  // Array has a .length, so no more error
-//   return arg;
+// const enum Enum {
+//   A = 1,
+//   B = A * 2
 // }
+// console.log(Enum.B);
 
-// function loggingIdentity<T>(arg: T[]): T[] {
-//   console.log(arg.length);  // Array has a .length, so no more error
-//   return arg;
+// enum Enum {
+//   A
 // }
-
-// function loggingIdentity<T>(arg: T): T {
-//   console.log(arg.length);  // Error: T doesn't have .length
-//   return arg;
-// }
-
-// function identity<T>(arg: T): T {
-//   return arg;
-// }
-// let output = identity<string>("myString");
-
-// function identity(arg: any): any {
-//   return arg;
-// }
+// let a = Enum.A;
+// let nameOfA = Enum[Enum.A]; // "A"
 
 
-// function identity(arg: number): number {
-//   return arg;
+// enum FileAccess {
+//   // constant members
+//   None,
+//   Read = 1 << 1,
+//   Write = 1 << 2,
+//   ReadWrite = Read | Write,
+//   // computed member
+//   G = "123".length
 // }

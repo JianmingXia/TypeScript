@@ -1,30 +1,27 @@
-function identity(arg) {
-    return arg;
-}
-var myIdentity = identity;
-// function identity<T>(arg: T): T {
-//   return arg;
+console.log(Enum.A, Enum.B, Enum.C);
+// const enum Directions {
+//   Up,
+//   Down,
+//   Left,
+//   Right
 // }
-// let myIdentity: <T>(arg: T) => T = identity;
-// function loggingIdentity<T>(arg: Array<T>): Array<T> {
-//   console.log(arg.length);  // Array has a .length, so no more error
-//   return arg;
+// let directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right]
+// const enum Enum {
+//   A = 1,
+//   B = A * 2
 // }
-// function loggingIdentity<T>(arg: T[]): T[] {
-//   console.log(arg.length);  // Array has a .length, so no more error
-//   return arg;
+// console.log(Enum.B);
+// enum Enum {
+//   A
 // }
-// function loggingIdentity<T>(arg: T): T {
-//   console.log(arg.length);  // Error: T doesn't have .length
-//   return arg;
-// }
-// function identity<T>(arg: T): T {
-//   return arg;
-// }
-// let output = identity<string>("myString");
-// function identity(arg: any): any {
-//   return arg;
-// }
-// function identity(arg: number): number {
-//   return arg;
+// let a = Enum.A;
+// let nameOfA = Enum[Enum.A]; // "A"
+// enum FileAccess {
+//   // constant members
+//   None,
+//   Read = 1 << 1,
+//   Write = 1 << 2,
+//   ReadWrite = Read | Write,
+//   // computed member
+//   G = "123".length
 // } 
